@@ -15,19 +15,20 @@ if (localStorage.getItem("saved") == null) {
 }
 
 function UVI(lat, lon) {
-    fetch('http://api.openweathermap.org/data/2.5/uvi?APPID='+key+'&lat='+lat+'&lon='+lon)
+    fetch('https://api.openweathermap.org/data/2.5/uvi?APPID='+key+'&lat='+lat+'&lon='+lon)
     .then((UVresponse) => {
         return UVresponse.json();
     })
     .then((UVresponse) => {
         var uvIndex = UVresponse.value;
         currentWeather.append('<p id="uv"> UV Index: ' +uvIndex+ '</p>')
+        debugger;
         $("#uv").removeClass();
-        if (uvIndex < 3) {
+        if (0.0 < Math.floor(uvIndex) < 3.0) {
             $("#uv").addClass("green");
-        } else if (UVresponse < 7.0) {
+        } else if (3.0 < Math.floor(uvIndex) < 7.0) {
             $("#uv").addClass("yellow");
-        } else {
+        } else if (7.0 < Math.floor(uvIndex) < 15.0) {
             $("#uv").addClass("red");
         }
         return uvIndex;
@@ -95,7 +96,7 @@ function updatePage(response) {
 function searchCity(cityName) {
     event.preventDefault();
 
-    fetch('http://api.openweathermap.org/data/2.5/weather?q='+cityName+'&units=imperial&APPID='+key)
+    fetch('https://api.openweathermap.org/data/2.5/weather?q='+cityName+'&units=imperial&APPID='+key)
     .then(function(response) {
         if (response.status !== 200) {
             console.log('Looks like there was a problem. Status Code: ' +
@@ -112,7 +113,7 @@ function searchCity(cityName) {
     })
 
     // then for forecast
-    fetch('http://api.openweathermap.org/data/2.5/forecast?q='+cityName+'&units=imperial&APPID='+key)
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q='+cityName+'&units=imperial&APPID='+key)
     .then(function(foreResponse) {
         if (foreResponse.status !== 200) {
             console.log('Looks like there was a problem. Status Code: ' +
