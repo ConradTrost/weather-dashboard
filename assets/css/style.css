@@ -103,13 +103,21 @@ body {
 }
 
 .green {
-    background-color: green;
+    background-color: rgb(64, 155, 102);
+
 }
 
 .yellow {
-    background-color: yellow;
+    background-color: rgb(255, 253, 128);
 }
 
 .red {
-    background-color: red;
+    background-color: rgb(224, 56, 56);
+    color: white;
+}
+
+#uv {
+    width: 150px;
+    padding: 15px;
+    border-radius: 4%;
 }

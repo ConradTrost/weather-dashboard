@@ -22,13 +22,12 @@ function UVI(lat, lon) {
     .then((UVresponse) => {
         var uvIndex = UVresponse.value;
         currentWeather.append('<p id="uv"> UV Index: ' +uvIndex+ '</p>')
-        debugger;
         $("#uv").removeClass();
-        if (0.0 < Math.floor(uvIndex) < 3.0) {
+        if (parseFloat(uvIndex) < 3) {
             $("#uv").addClass("green");
-        } else if (3.0 < Math.floor(uvIndex) < 7.0) {
+        } else if (parseFloat(uvIndex) < 7) {
             $("#uv").addClass("yellow");
-        } else if (7.0 < Math.floor(uvIndex) < 15.0) {
+        } else {
             $("#uv").addClass("red");
         }
         return uvIndex;
@@ -38,7 +37,7 @@ function UVI(lat, lon) {
 // Forecast Report
 function forecastFUN(response) {
     forecast.html("");
-    for (var i = 4; i < response.list.length; i += 8 ) {
+    for (var i = 8; i < response.list.length; i += 8 ) {
         var forecastTemp = response.list[i].main.temp;
         // Formatting date (Maybe update to unix)
         var forecastTime = response.list[i].dt_txt;
@@ -84,7 +83,6 @@ function updatePage(response) {
         '<div id="icon"><p class="display-4">'+nameOfCity+'</p>'
         + '<img id="wicon" src="http://openweathermap.org/img/wn/' + iconCode + '@2x.png" alt="Weather icon"></div>'
         + '<p>' + actualDate + '</p>'
-        + '<br></br>'
         + '<p> Temperature: ' +temp+ ' &degF</p>'
         + '<p> Humidity: ' +humidity+ '%</p>'
         + '<p> Wind Speed: ' +windSpeed+ ' MPH</p>'
