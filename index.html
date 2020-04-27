@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="container-fluid">Weather Dashboard</div>
+    <div class="row main-body">
+        <!-- Search Bar -->
+        <div class="col-4 left-side">
+            <form class="search-bar">
+                <label type="text" class="input">Search for a City:</label>
+                <div class="input-group mb-3">
+                    <input type="text" placeholder="Seattle" id="city-input" class="form-control">
+                    <div class="input-group-append">
+                        <button class="button" id="cityBTN"><span class="fas fa-cloud-sun-rain"></span></button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Local Storage Area -->
+            <ul id="recents" class="list-group">
+
+            </ul>
+        </div>
+
+        <!-- Right Side Forecast Container-->
+        <div class="col-6 forecast-container">
+            <div class="row">
+                <!-- Current Weather -->
+                <div class="col current-weather"></div>
+            </div>
+            <!-- Forecast -->
+            <div class="row forecast-display"></div>
+        </div>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
